@@ -107,8 +107,8 @@ begin
   commit_to = '87108a4'
   g.diff(commit_from, commit_to).each do |file|
     if file.path = /_data\/.*\.yml/
-      puts g.object(commit_from':'file.path).contents
-      puts g.object(commit_to':'file.path).contents
+      puts g.object("#{commit_from}:#{file.path}").contents
+      puts g.object("#{commit_to}:#{file.path}").contents
     end
   end
 
