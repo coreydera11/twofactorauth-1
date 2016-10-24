@@ -102,8 +102,8 @@ end
 
 begin
   g = Git.open('.')
-  g.diff.each do |gitfile|
-    puts gitfile
+  g.diff('HEAD','HEAD~1').each do |file|
+    puts file.path
   end
 
   # Load each section, check for errors such as invalid syntax
