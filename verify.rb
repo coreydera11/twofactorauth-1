@@ -102,8 +102,14 @@ end
 
 begin
   g = Git.open('.')
-  g.diff('HEAD','HEAD~1').each do |file|
-    puts file.path
+  # TODO sgroat find way to get proper commit IDs from travis
+  commit_from = '8e5cbf8'
+  commit_to = '87108a4'
+  g.diff(commit_from, commit_to).each do |file|
+    if file.path = /_data\/.*\.yml/
+      puts g.object(commit_from':'file.path).contents
+      puts g.object(commit_to':'file.path).contents
+    end
   end
 
   # Load each section, check for errors such as invalid syntax
