@@ -1,5 +1,7 @@
 require 'yaml'
 require 'fastimage'
+require 'yamldiff'
+require 'git'
 @output = 0
 
 # Should the script ignore checking for Twitter handles?
@@ -98,6 +100,8 @@ end
 # rubocop:enable AbcSize,CyclomaticComplexity
 
 begin
+  g = Git.open('.', :log => Logger.new(STDOUT))
+  puts g.diff
 
   # Load each section, check for errors such as invalid syntax
   # as well as if an image is missing
