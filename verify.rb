@@ -102,7 +102,9 @@ end
 
 begin
   g = Git.open('.', :log => Logger.new(STDOUT))
-  puts g.diff
+  g.each do |gitfile|
+    puts gitfile
+  end
 
   # Load each section, check for errors such as invalid syntax
   # as well as if an image is missing
