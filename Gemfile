@@ -11,4 +11,5 @@ group :test do
   gem 'fastimage'
   gem 'rubocop'
   gem 'yamldiff'
+  gem 'git'
 end
