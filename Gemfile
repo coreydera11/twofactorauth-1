@@ -10,4 +10,5 @@ group :test do
   gem 'rake'
   gem 'fastimage'
   gem 'rubocop'
+  gem 'yamldiff'
 end
