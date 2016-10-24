@@ -102,7 +102,7 @@ end
 
 begin
   g = Git.open('.', :log => Logger.new(STDOUT))
-  g.each do |gitfile|
+  g.diff.each do |gitfile|
     puts gitfile
   end
 
