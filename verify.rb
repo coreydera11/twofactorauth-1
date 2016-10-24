@@ -101,7 +101,7 @@ end
 # rubocop:enable AbcSize,CyclomaticComplexity
 
 begin
-  g = Git.open('.', :log => Logger.new(STDOUT))
+  g = Git.open('.')
   g.diff.each do |gitfile|
     puts gitfile
   end
