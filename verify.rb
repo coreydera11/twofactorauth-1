@@ -1,6 +1,7 @@
 require 'yaml'
 require 'fastimage'
 require 'kwalify'
+require 'html-proofer'
 @output = 0
 
 # YAML tags related to TFA
@@ -53,6 +54,12 @@ end
 # Load each section, check for errors such as invalid syntax
 # as well as if an image is missing
 begin
+  HTMLProofer.check_directory(
+    './_site', \
+    assume_extension: true, \
+    disable_external: true, \
+    cache: { timeframe: '1d' }
+  ).run
   sections = YAML.load_file('_data/sections.yml')
   # Check sections.yml alphabetization
   error('section.yml is not alphabetized by name') \

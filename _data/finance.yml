@@ -205,7 +205,7 @@ websites:
       img: quickfile.png
       tfa: Yes
       software: Yes
-      doc: http://help.quickfile.co.uk/main/1/2-factor_authentication.htm
+      doc: https://community.quickfile.co.uk/t/2-factor-authentication/8892
 
     - name: Quizzle
       url: https://www.quizzle.com

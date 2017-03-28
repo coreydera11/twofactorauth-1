@@ -41,7 +41,7 @@ websites:
     - name: Balsamiq
       url: https://balsamiq.com
       twitter: balsamiq
-      facebook: BalsamiqMockups
+      facebook: balsamiq
       img: balsamiq.png
       tfa: No
 
@@ -188,13 +188,6 @@ websites:
       twitter: jetbrains
       facebook: JetBrains
 
-    - name: Jidoteki
-      url: https://jidoteki.com
-      img: jidoteki.png
-      tfa: Yes
-      software: Yes
-      doc: 'https://jidoteki.com/documentation#authentication'
-
     - name: Koding
       url: https://koding.com
       img: koding.png
@@ -211,7 +204,7 @@ websites:
       doc: https://help.ubuntu.com/community/SSO/FAQs/2FA
 
     - name: Looker
-      url: http://looker.com/
+      url: https://looker.com/
       img: looker.png
       tfa: Yes
       software: Yes
