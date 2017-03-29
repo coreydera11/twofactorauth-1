@@ -61,7 +61,7 @@ websites:
       exceptions:
          text: "Software 2FA is only available for Swedish citizens with BankID."
 
-    - name: Litle & Co
+    - name: 'Litle & Co'
       img: litleco.png
       twitter: litleco
       tfa: No

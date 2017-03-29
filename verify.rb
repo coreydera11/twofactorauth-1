@@ -57,6 +57,7 @@ begin
   HTMLProofer.check_directory(
     './_site', \
     assume_extension: true, \
+    check_html: true, \
     disable_external: true, \
     cache: { timeframe: '1d' }
   ).run

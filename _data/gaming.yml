@@ -14,7 +14,7 @@ websites:
       facebook: BlackDesertOnline
       tfa: No
 
-    - name: Blade & Soul
+    - name: 'Blade & Soul'
       url: http://www.bladeandsoul.com/
       img: bladeandsoul.png
       tfa: Yes
