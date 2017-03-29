@@ -58,7 +58,6 @@ begin
     './_site', \
     assume_extension: true, \
     check_html: true, \
-    disable_external: true, \
     cache: { timeframe: '1d' }
   ).run
   sections = YAML.load_file('_data/sections.yml')
