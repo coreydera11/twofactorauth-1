@@ -20,6 +20,32 @@ require 'kwalify'
 # Image format used for all images in the 'img/' directories.
 @img_extension = '.png'
 
+class WebsiteValidator < Kwalify::Validator
+   ## load schema definition
+   @@schema = Kwalify::Yaml.load_file('websites_schema.yml')
+
+   def initialize()
+      super(@@schema)
+   end
+
+   ## hook method called by Validator#validate()
+   def validate_hook(value, rule, path, errors)
+      case rule.name
+      when 'Website'
+         if value['tfa']
+           tag = false
+           @tfa_tags[true].each do |true_tag|
+             tag = true unless true_tag.empty?
+           end
+           unless tag
+             msg = "one of #{@tfa_tags[true]} is required"
+             errors << Kwalify::ValidationError.new(msg, path)
+           end
+         end
+      end
+   end
+end
+
 # Send error message
 def error(msg)
   @output += 1
@@ -58,7 +84,7 @@ begin
   error('section.yml is not alphabetized by name') \
     if sections != (sections.sort_by { |section| section['id'].downcase })
   schema = YAML.load_file('websites_schema.yml')
-  validator = Kwalify::Validator.new(schema)
+  validator = WebsiteValidator.new(schema)
   sections.each do |section|
     data = YAML.load_file("_data/#{section['id']}.yml")
     websites = data['websites']
