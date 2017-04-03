@@ -4,7 +4,7 @@ require 'kwalify'
 @output = 0
 
 # YAML tags related to TFA
-@tfa_tags = {
+$tfa_tags = {
   # YAML tags for TFA Yes
   true => %w[email hardware software sms phone doc],
   # YAML tags for TFA No
@@ -34,11 +34,11 @@ class WebsiteValidator < Kwalify::Validator
       when 'Website'
          if value['tfa']
            tag = false
-           @tfa_tags[true].each do |true_tag|
+           $tfa_tags[true].each do |true_tag|
              tag = true unless true_tag.empty?
            end
            unless tag
-             msg = "one of #{@tfa_tags[true]} is required"
+             msg = "one of #{$tfa_tags[true]} is required"
              errors << Kwalify::ValidationError.new(msg, path)
            end
          end
@@ -102,7 +102,7 @@ begin
     imgs = Dir["img/#{section['id']}/*"]
 
     websites.each do |website|
-      @tfa_tags[!website['tfa']].each do |tag|
+      $tfa_tags[!website['tfa']].each do |tag|
         next if website[tag].nil?
         error("\'#{tag}\' should NOT be "\
             "present when tfa: #{website['tfa'] ? 'true' : 'false'}.")
