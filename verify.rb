@@ -1,15 +1,14 @@
 require 'yaml'
 require 'fastimage'
 require 'kwalify'
-require 'html-proofer'
 @output = 0
 
 # YAML tags related to TFA
 @tfa_tags = {
   # YAML tags for TFA Yes
-  true => %w(email hardware software sms phone doc),
+  true => %w[email hardware software sms phone doc],
   # YAML tags for TFA No
-  false => %w(status twitter facebook email_address lang)
+  false => %w[status twitter facebook email_address lang]
 }.freeze
 
 # Image max size (in bytes)
@@ -54,13 +53,6 @@ end
 # Load each section, check for errors such as invalid syntax
 # as well as if an image is missing
 begin
-  HTMLProofer.check_directory(
-    './_site', \
-    assume_extension: true, \
-    check_html: true, \
-    disable_external: true, \
-    cache: { timeframe: '1d' }
-  ).run
   sections = YAML.load_file('_data/sections.yml')
   # Check sections.yml alphabetization
   error('section.yml is not alphabetized by name') \
