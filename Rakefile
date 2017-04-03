@@ -1,13 +1,8 @@
+require 'html-proofer'
 require 'rubocop/rake_task'
 require 'jekyll'
 
-RuboCop::RakeTask.new
-
-task default: %w(build verify rubocop)
-
-task :verify do
-  ruby './verify.rb'
-end
+task default: %w[build proof verify rubocop]
 
 task :build do
   config = Jekyll.configuration(
@@ -17,3 +12,19 @@ task :build do
   site = Jekyll::Site.new(config)
   Jekyll::Commands::Build.build site, config
 end
+
+task :proof do
+  HTMLProofer.check_directory(
+    './_site', \
+    assume_extension: true, \
+    check_html: true, \
+    disable_external: true, \
+    cache: { timeframe: '1d' }
+  ).run
+end
+
+task :verify do
+  ruby './verify.rb'
+end
+
+RuboCop::RakeTask.new
