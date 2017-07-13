@@ -104,14 +104,21 @@ else
   puts "<------------ No errors. You\'re good to go! ------------>\n"
   if true
 #  if ENV['TRAVIS_EVENT_TYPE'] == 'cron' && \
-#     ENV['TRAVIS_SECURE_ENV'] == 'true' && Date.today.wday.zero?
+#     ENV['TRAVIS_SECURE_ENV'] == 'true' && Date.today.monday?
     puts 'Sending weekly diff email'
     # Find commits 1 week old
     repo = Rugged::Repository.new('.')
     walker = Rugged::Walker.new(repo)
     walker.push(repo.head.target)
+    commit_to_diff = nil
     walker.each do |commit|
-      print "found one" if Date.today - 7 < Date.parse(commit.time.inspect)
+      if Date.today - 7 < Date.parse(commit.time.inspect)
+        commit_to_diff = commit
+      else
+        return
+      end
     end
+    paths = repo.head.target.diff(commit_to_diff).deltas.map { |d| d.new_file[:path] }
+    puts paths
   end
 end
