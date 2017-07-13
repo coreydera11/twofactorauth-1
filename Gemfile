@@ -9,4 +9,5 @@ group :test do
   gem 'kwalify'
   gem 'rake'
   gem 'rubocop'
+  gem 'rugged'
 end

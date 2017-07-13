@@ -1,6 +1,8 @@
+require 'date'
 require 'yaml'
 require 'fastimage'
 require 'kwalify'
+require 'rugged'
 @output = 0
 
 # YAML tags related to TFA
@@ -100,4 +102,16 @@ rescue => e
   exit 1
 else
   puts "<------------ No errors. You\'re good to go! ------------>\n"
+  if true
+#  if ENV['TRAVIS_EVENT_TYPE'] == 'cron' && \
+#     ENV['TRAVIS_SECURE_ENV'] == 'true' && Date.today.wday.zero?
+    puts 'Sending weekly diff email'
+    # Find commits 1 week old
+    repo = Rugged::Repository.new('.')
+    walker = Rugged::Walker.new(repo)
+    walker.push(repo.head.target)
+    walker.each do |commit|
+      print "found one" if Date.today - 7 < Date.parse(commit.time.inspect)
+    end
+  end
 end
