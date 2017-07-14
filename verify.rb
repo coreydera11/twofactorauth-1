@@ -104,6 +104,7 @@ rescue => e
 else
   puts "<------------ No errors. You\'re good to go! ------------>\n"
   if true
+    # TODO figure out travis git structure
 #  if ENV['TRAVIS_EVENT_TYPE'] == 'cron' && \
 #     ENV['TRAVIS_SECURE_ENV'] == 'true' && Date.today.monday?
     puts 'Sending weekly diff email'
@@ -113,12 +114,10 @@ else
     walker.push(repo.head.target)
     commit_to_diff = nil
     walker.each do |commit|
-      if Date.today - 7 < Date.parse(commit.time.inspect)
-        commit_to_diff = commit
-      else
-        break
-      end
+      commit_to_diff = commit
+      break if Date.today - 7 > Date.parse(commit.time.inspect)
     end
+    # Diffing old commit blobs with current info 
     ymls = repo.head.target.diff(commit_to_diff).deltas.map { |d| d.new_file[:path] }
     ymls.map! { |y| Pathname.new(y).each_filename.to_a }
     ymls.select! { |y| y[0] == '_data' && y[1] != 'sections.yml' }
@@ -127,9 +126,10 @@ else
       yml_oid = repo.lookup(commit_to_diff.tree['_data'][:oid])[y][:oid]
       old_content = YAML.safe_load(repo.lookup(yml_oid).content)
       curr_content = YAML.load_file("_data/#{y}")
+      websitenum_regex = /(?<=websites\[).*(?=\])/
       HashDiff.diff(old_content, curr_content).each do |d|
-        if d[0] == '+' && d[1] =~ /(?<=websites\[).*(?=\])/
-          puts curr_content['websites'][(/(?<=websites\[).*(?=\])/.match(d[1]).to_s.to_i)]
+        if d[0] == '+' && d[1] =~ websitenum_regex
+          puts curr_content['websites'][(websitenum_regex.match(d[1]).to_s.to_i)]
         end
       end
     end
