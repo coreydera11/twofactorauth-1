@@ -5,6 +5,7 @@ gem 'github-pages', '140', group: :jekyll_plugins
 
 group :test do
   gem 'fastimage'
+  gem 'hashdiff'
   gem 'html-proofer'
   gem 'kwalify'
   gem 'rake'
