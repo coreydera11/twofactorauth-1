@@ -14,23 +14,18 @@ task :build do
   Jekyll::Commands::Build.build site, config
 end
 
-task proof: 'build' do
-  HTMLProofer.check_directory(
-    './_site', \
-    assume_extension: true, \
-    check_html: true, \
-    disable_external: true
-  ).run
-end
-
-task proof_external: 'build' do
-  HTMLProofer.check_directory(
-    './_site', \
-    assume_extension: true, \
-    check_html: true, \
-    cache: { timeframe: '1w' }, \
-    hydra: { max_concurrency: 12 }
-  ).run
+task :proof, %i[target opts] => 'build' do |_t, args|
+  args.with_defaults(target: './_site', opts: '{}')
+  opts = { assume_extension: true, \
+           check_html: true, \
+           disable_external: true, \
+           cache: { timeframe: '1w' }, \
+           check_sri: true, \
+           url_ignore: [
+             # see https://github.com/google/fonts/issues/473#issuecomment-331329601
+             %r{https:\/\/fonts.googleapis.com\/css\/*}
+           ] }.merge!(YAML.safe_load(args.opts, [Symbol]))
+  HTMLProofer.check_directory(args.target, opts).run
 end
 
 JsonLint::RakeTask.new do |t|
