@@ -57,7 +57,7 @@ task :proof, %i[target opts] => 'build' do |_t, args|
   args.with_defaults(target: './_site', opts: '{}')
   opts = { assume_extension: true, \
            check_html: true, \
-           disable_external: true, \
+           disable_external: false, \
            cache: { timeframe: '1w' }, \
            check_sri: true, \
            url_ignore: URLS }.merge!(YAML.safe_load(args.opts, [Symbol]))

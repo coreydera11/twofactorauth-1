@@ -9,12 +9,5 @@ addons:
     packages:
     - libcurl4-openssl-dev
     - ca-certificates
-matrix:
-  fast_finish: true
-  include:
-    - script: bundle exec rake
-    - script: "bundle exec rake proof['./_site',':disable_external: false']"
-  allow_failures:
-    - script: "bundle exec rake proof['./_site',':disable_external: false']"
 notifications:
     email: false
