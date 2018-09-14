@@ -14,6 +14,7 @@ URLS = [
   %r{https:\/\/www.gilt.com},
   %r{https:\/\/www.rakuten.com\/},
   %r{https:\/\/www.wayfair.com},
+  %r{https:\/\/jet.com},
   %r{https:\/\/www.irs.gov\/individuals\/secure-access-how-to-register-for-certain-online-self-help-tools},
   # 302s
   %r{https:\/\/www.optionsxpress.com\/},
@@ -24,6 +25,7 @@ URLS = [
   # timeout
   %r{https:\/\/www.united.com\/},
   %r{https:\/\/www.immobilienscout24.de},
+  %r{https:\/\/pogoplug.com\/},
   # SSL errors
   %r{https:\/\/www.tim.it\/},
   %r{https:\/\/www.overstock.com},
@@ -32,6 +34,8 @@ URLS = [
   %r{https:\/\/sl.se\/},
   %r{https:\/\/www.inexfinance.com\/},
   %r{https:\/\/docs.cloudmanager.mongodb.com\/core\/two-factor-authentication},
+  %r{https:\/\/help.packet.net\/faq\/onboarding\/portal},
+  %r{https:\/\/sparkpost.com\/},
   # other
   %r{https:\/\/mega.nz\/},
   # uses DDoS protection
