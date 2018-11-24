@@ -42,6 +42,7 @@ URLS = [
   # uses DDoS protection
   %r{https:\/\/coinone.co.kr*},
   %r{https:\/\/hitbtc.com*},
+  %r{https:\/\/www.btcmarkets.net*},
   # see https://github.com/google/fonts/issues/473#issuecomment-331329601
   %r{https:\/\/fonts.googleapis.com\/css\/*}
 ].freeze
