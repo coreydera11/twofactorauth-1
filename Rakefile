@@ -28,6 +28,7 @@ URLS = [
   %r{https:\/\/docs.connectwise.com\/ConnectWise_Control_Documentation\/Get_started\/Administration_page\/Security_page\/Enable_two-factor_authentication_for_host_accounts},
   %r{https:\/\/www.ankama.com},
   %r{https:\/\/socialclub.rockstargames.com},
+  %r{https:\/\/my.gov.au},
   # timeout
   %r{https:\/\/www.united.com},
   %r{https:\/\/pogoplug.com},
