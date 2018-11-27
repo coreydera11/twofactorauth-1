@@ -5,7 +5,6 @@ require 'jsonlint/rake_task'
 
 # rubocop:disable Metrics/LineLength
 URLS = []
-=begin
   # returning 403s
   %r{https:\/\/www.aircanada.com},
   %r{https:\/\/www.alaskaair.com},
@@ -16,7 +15,6 @@ URLS = []
   %r{https:\/\/www.rakuten.com},
   %r{https:\/\/www.wayfair.com},
   %r{https:\/\/jet.com},
-  %r{https:\/\/www.irs.gov\/individuals\/secure-access-how-to-register-for-certain-online-self-help-tools},
   %r{https:\/\/aternos.org},
   %r{https:\/\/www.boxed.com},
   %r{https:\/\/www.eprice.it},
@@ -26,25 +24,19 @@ URLS = []
   %r{https:\/\/www.zazzle.com},
   # 302s
   %r{https:\/\/www.optionsxpress.com},
-  %r{https:\/\/my.gov.au},
   %r{https:\/\/help.ea.com\/en-us\/help\/account\/origin-login-verification-information\/},
   %r{https:\/\/docs.connectwise.com\/ConnectWise_Control_Documentation\/Get_started\/Administration_page\/Security_page\/Enable_two-factor_authentication_for_host_accounts},
   %r{https:\/\/www.ankama.com},
   %r{https:\/\/socialclub.rockstargames.com},
   # timeout
   %r{https:\/\/www.united.com},
-  %r{https:\/\/www.immobilienscout24.de},
   %r{https:\/\/pogoplug.com},
   # SSL errors
-  %r{https:\/\/www.tim.it},
   %r{https:\/\/www.overstock.com},
   %r{https:\/\/www.macys.com},
   %r{https:\/\/www.kohls.com},
-  %r{https:\/\/sl.se},
   %r{https:\/\/www.inexfinance.com},
   %r{https:\/\/docs.cloudmanager.mongodb.com\/core\/two-factor-authentication},
-  %r{https:\/\/help.packet.net\/faq\/onboarding\/portal},
-  %r{https:\/\/sparkpost.com},
   %r{https:\/\/support.snapchat.com\/en-US\/article\/enable-login-verification},
   %r{https:\/\/www.openprovider.co.uk},
   # other
@@ -54,12 +46,10 @@ URLS = []
   %r{https:\/\/maxemail.emailcenteruk.com},
   # uses DDoS protection
   %r{https:\/\/coinone.co.kr*},
-  %r{https:\/\/hitbtc.com*},
-  %r{https:\/\/www.btcmarkets.net*},
+  %r{https:\/\/www.btcmarkets.net},
   # see https://github.com/google/fonts/issues/473#issuecomment-331329601
   %r{https:\/\/fonts.googleapis.com\/css\/*}
 ].freeze
-=end
 # rubocop:enable Metrics/LineLength
 
 task default: %w[proof verify jsonlint rubocop]
