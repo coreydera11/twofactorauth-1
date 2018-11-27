@@ -4,7 +4,8 @@ require 'jekyll'
 require 'jsonlint/rake_task'
 
 # rubocop:disable Metrics/LineLength
-URLS = [
+URLS = []
+=begin
   # returning 403s
   %r{https:\/\/www.aircanada.com},
   %r{https:\/\/www.alaskaair.com},
@@ -58,6 +59,7 @@ URLS = [
   # see https://github.com/google/fonts/issues/473#issuecomment-331329601
   %r{https:\/\/fonts.googleapis.com\/css\/*}
 ].freeze
+=end
 # rubocop:enable Metrics/LineLength
 
 task default: %w[proof verify jsonlint rubocop]
