@@ -4,7 +4,7 @@ require 'jekyll'
 require 'jsonlint/rake_task'
 
 # rubocop:disable Metrics/LineLength
-URLS = []
+URLS = [
   # returning 403s
   %r{https:\/\/www.aircanada.com},
   %r{https:\/\/www.alaskaair.com},
