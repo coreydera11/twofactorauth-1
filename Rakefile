@@ -44,8 +44,13 @@ URLS = [
   %r{https:\/\/docs.cloudmanager.mongodb.com\/core\/two-factor-authentication},
   %r{https:\/\/help.packet.net\/faq\/onboarding\/portal},
   %r{https:\/\/sparkpost.com},
+  %r{https:\/\/support.snapchat.com\/en-US\/article\/enable-login-verification},
+  %r{https:\/\/www.openprovider.co.uk},
   # other
   %r{https:\/\/mega.nz},
+  %r{https:\/\/www.fasttech.com},
+  %r{https:\/\/www.domaintools.com},
+  %r{https:\/\/maxemail.emailcenteruk.com},
   # uses DDoS protection
   %r{https:\/\/coinone.co.kr*},
   %r{https:\/\/hitbtc.com*},
